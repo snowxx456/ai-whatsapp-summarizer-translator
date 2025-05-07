@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Compiled JavaScript
+dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Env file (DO NOT commit secrets)
+.env
+
+# WhatsApp Web session files (auth data)
+.session/
+.session-data/
+auth/
+auth.json
+creds.json
+
+# VSCode settings (optional)
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Mac system files
+.DS_Store
