@@ -161,6 +161,8 @@ cp .env.local#example .env
 GEMINI_API_KEY=your_api_key_here
 ```
 
+You can get your Gemini API key from [`ai.google.dev`](https://ai.google.dev/gemini-api/docs/api-key)
+
 5. (Optional) Configure allowed users in `config.ts`:
 
 ```typescript
