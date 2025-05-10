@@ -101,16 +101,46 @@ export class AIClient {
 
         if (msg.type === "from-whatsapp" && msg.content) {
           console.log("Received query:", msg.content);
-          const response = await this.processMessage(msg.content);
+          const rawResponse = await this.processMessage(msg.content);
+          console.log("Raw response got:", rawResponse);
 
-          const responseMsg: wsMessage = {
-            type: "to-whatsapp",
-            sender: "agent",
-            recieversID: this.clientID,
-            content: response,
-            msgSenderID: msg.msgSenderID,
-          };
-          this.ws?.send(JSON.stringify(responseMsg));
+          try {
+            let finalContent: string;
+            if (
+              rawResponse.trim().startsWith("{") ||
+              rawResponse.includes("```json")
+            ) {
+              const cleanedResponse = rawResponse
+                .replace(/```json/gi, "")
+                .replace(/```/g, "")
+                .trim();
+
+              const responseObj = JSON.parse(cleanedResponse);
+              finalContent = responseObj.summary;
+            } else {
+              finalContent = rawResponse;
+            }
+
+            const responseMsg: wsMessage = {
+              type: "to-whatsapp",
+              sender: "agent",
+              recieversID: this.clientID,
+              content: finalContent,
+              msgSenderID: msg.msgSenderID,
+            };
+
+            this.ws?.send(JSON.stringify(responseMsg));
+          } catch (error) {
+            console.error("Error processing response:", error);
+            const fallbackMsg: wsMessage = {
+              type: "to-whatsapp",
+              sender: "agent",
+              recieversID: this.clientID,
+              content: rawResponse,
+              msgSenderID: msg.msgSenderID,
+            };
+            this.ws?.send(JSON.stringify(fallbackMsg));
+          }
         }
       } catch (error) {
         console.error("Message handling error:", error);
