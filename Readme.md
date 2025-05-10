@@ -173,6 +173,27 @@ export const allowedUsers: AllowedSender = {
 };
 ```
 
+6. (Optional) Modify supported languages in `config.ts`:
+
+```typescript
+export const SUPPORTED_LANGUAGES = [
+  { code: "en", name: "English" },
+  { code: "es", name: "Spanish" },
+  { code: "fr", name: "French" },
+  { code: "de", name: "German" },
+  { code: "it", name: "Italian" },
+  { code: "pt", name: "Portuguese" },
+  { code: "hi", name: "Hindi" },
+  { code: "ja", name: "Japanese" },
+  { code: "ko", name: "Korean" },
+  { code: "zh", name: "Chinese" },
+  { code: "ar", name: "Arabic" },
+  { code: "ru", name: "Russian" },
+];
+```
+
+Add more languages by including additional entries with the appropriate language code and name.
+
 ### Running the Application
 
 Start the application using:
