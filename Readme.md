@@ -187,6 +187,16 @@ If that fails, try:
 npx ts-node-dev src/index.ts
 ```
 
+### WhatsApp Authentication
+
+When you run the application for the first time, it will generate a QR code in the console. To authenticate:
+
+1. Open WhatsApp on your phone
+2. Go to Settings > Linked Devices
+3. Tap on "Link a Device"
+4. Scan the QR code displayed in your console
+5. Once authenticated, the bot will be connected to your WhatsApp account
+
 ## Technologies Used
 
 - **TypeScript**: For strongly-typed code implementation
