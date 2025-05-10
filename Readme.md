@@ -138,8 +138,8 @@ The project uses LangChain to interface with Gemini AI for function calling. Whe
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/whatsapp-ai-bot.git
-cd whatsapp-ai-bot
+git clone https://github.com/snowxx456/ai-whatsapp-summarizer-translator.git
+cd ai-whatsapp-summarizer-translator
 ```
 
 2. Install dependencies:
@@ -171,8 +171,9 @@ export const allowedUsers: AllowedSender = {
     { id: "917016xxxxxx@c.us", name: "User Name" },
     // Add more users as needed
   ],
-  production: false, // Set to false to use allowedUsers filter
 };
+
+export const production: boolean = false, // Set to false to use allowedUsers filter
 ```
 
 6. (Optional) Modify supported languages in `config.ts`:
